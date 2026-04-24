@@ -9,7 +9,7 @@ import lightgbm as lgb
 from xgboost import XGBRegressor
 
 
-train=pd.read_csv('train.csv')
+train = pd.read_csv('house-prices-advanced-regression-techniques/train.csv')
 test=pd.read_csv('test.csv')
 print(train.shape)
 print(test.shape)
