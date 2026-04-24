@@ -8,6 +8,46 @@ from lightgbm import LGBMRegressor
 import lightgbm as lgb
 from xgboost import XGBRegressor
 
+import streamlit as st
+import pandas as pd
+import os
+
+# -----------------------------
+# App title
+# -----------------------------
+st.title("🏠 House Prices ML App")
+
+# -----------------------------
+# Safe file path handling
+# -----------------------------
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+train_path = os.path.join(BASE_DIR, "train.csv")
+
+# -----------------------------
+# Debug: show current directory + files
+# (VERY useful on Streamlit Cloud)
+# -----------------------------
+st.write("📂 Current directory:", BASE_DIR)
+st.write("📁 Files here:", os.listdir(BASE_DIR))
+
+# -----------------------------
+# Load dataset safely
+# -----------------------------
+if os.path.exists(train_path):
+    train = pd.read_csv(train_path)
+    st.success("✅ train.csv loaded successfully!")
+    
+    # Show dataset preview
+    st.write("📊 Data Preview:")
+    st.dataframe(train.head())
+
+else:
+    st.error("❌ train.csv NOT FOUND!")
+    st.info("Make sure train.csv is in the same folder as main.py or fix the path.")
+
+
+
 
 train = pd.read_csv('house-prices-advanced-regression-techniques/train.csv')
 test = pd.read_csv('house-prices-advanced-regression-techniques/test.csv')
