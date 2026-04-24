@@ -10,7 +10,7 @@ from xgboost import XGBRegressor
 
 
 train = pd.read_csv('house-prices-advanced-regression-techniques/train.csv')
-test=pd.read_csv('test.csv')
+test = pd.read_csv('house-prices-advanced-regression-techniques/test.csv')
 print(train.shape)
 print(test.shape)
 print(train.head())
